@@ -4,6 +4,13 @@ from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from .models import Producto3D
 from .forms import Producto3DForm
 
+from django.contrib.auth.decorators import user_passes_test
+
+
+def es_admin(user):
+    return user.is_authenticated and user.is_superuser
+
+
 # 1. Listar productos y Dashboard
 def lista_productos(request):
     query = request.GET.get('q', '')
@@ -77,3 +84,24 @@ def disminuir_stock(request, id):
         producto.stock -= 1
         producto.save()
     return redirect('lista_productos')
+
+# Vista pública: Todos pueden ver la lista
+def lista_productos(request):
+    # Lógica pública para ver productos...
+    return render(request, 'lista.html')
+
+# Vistas protegidas: Solo el admin puede modificar
+@user_passes_test(es_admin, login_url='/admin/login/')
+def crear_producto(request):
+    # Lógica para crear un registro...
+    pass
+
+@user_passes_test(es_admin, login_url='/admin/login/')
+def editar_producto(request, pk):
+    # Lógica para editar un registro...
+    pass
+
+@user_passes_test(es_admin, login_url='/admin/login/')
+def eliminar_producto(request, pk):
+    # Lógica para eliminar un registro...
+    pass

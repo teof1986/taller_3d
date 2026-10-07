@@ -23,6 +23,18 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- En tu archivo .html -->
+
+<!-- Todos ven el producto -->
+<h3>{{ producto.nombre }}</h3>
+<p>{{ producto.descripcion }}</p>
+
+<!-- Solo el admin ve las opciones de modificación -->
+{% if user.is_authenticated and user.is_superuser %}
+    <a href="{% url 'crear_producto' %}" class="btn">Agregar Nuevo</a>
+    <a href="{% url 'editar_producto' producto.id %}" class="btn">Editar</a>
+    <a href="{% url 'eliminar_producto' producto.id %}" class="btn">Eliminar</a>
+{% endif %}
                 {% for producto in productos %}
                 <tr>
                     <td>{{ producto.nombre }}</td>
