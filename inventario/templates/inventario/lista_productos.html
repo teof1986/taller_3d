@@ -14,7 +14,7 @@
             <h1>Inventario Taller 3D</h1>
             <div>
                 {% if user.is_authenticated and user.is_superuser %}
-                    <a href="{% url 'crear_producto' %}" class="btn btn-primary">+ Nuevo Producto 3D</a>
+                    <a href="/admin/" class="btn btn-primary">Ir al Panel de Administración</a>
                     <a href="/admin/logout/?next=/" class="btn btn-outline-secondary ms-2">Cerrar Sesión</a>
                 {% else %}
                     <a href="/admin/login/?next=/" class="btn btn-outline-primary">Ingresar como Admin</a>
@@ -43,8 +43,7 @@
                         <td>{{ producto.stock }}</td>
                         {% if user.is_authenticated and user.is_superuser %}
                             <td class="text-center">
-                                <a href="{% url 'editar_producto' producto.id %}" class="btn btn-sm btn-warning me-1">Editar</a>
-                                <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                                <a href="/admin/" class="btn btn-sm btn-warning">Modificar en Admin</a>
                             </td>
                         {% endif %}
                     </tr>
