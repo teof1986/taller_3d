@@ -1,0 +1,22 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Nuevo Producto - Taller 3D{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 500px; margin: 0 auto;">
+    <h2>➕ Cargar Nuevo Producto</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success">Guardar Producto</button>
+        <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

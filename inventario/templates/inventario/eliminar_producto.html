@@ -1,0 +1,16 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Eliminar Producto - Taller 3D{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 450px; margin: 0 auto; text-align: center;">
+    <h2 style="color: #e74c3c;">⚠️ Confirmar Eliminación</h2>
+    <p>¿Estás seguro de que deseas eliminar <strong>"{{ producto.nombre }}"</strong>?</p>
+    
+    <form method="POST" style="margin-top: 20px;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+        <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
