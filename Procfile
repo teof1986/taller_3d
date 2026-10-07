@@ -1,0 +1,1 @@
+web: python manage.py migrate && python create_admin.py && gunicorn taller_3d.wsgi:application
