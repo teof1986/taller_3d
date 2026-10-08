@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from .models import Producto3D
 from .forms import Producto3DForm
+from .models import Producto
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -12,6 +13,7 @@ def es_admin(user):
 
 
 # 1. Listar productos y Dashboard
+
 def lista_productos(request):
     query = request.GET.get('q', '')
     
@@ -36,7 +38,8 @@ def lista_productos(request):
         'total_filamento': round(total_filamento, 1),
         'valor_total': round(valor_total, 2),
     }
-    return render(request, 'inventario/lista.html', context)
+    # Corregida la ruta a 'inventario/lista_productos.html'
+    return render(request, 'inventario/lista_productos.html', context)
 
 # 2. Crear producto (AQUÍ ESTÁ LA FUNCIÓN QUE FALTABA)
 def crear_producto(request):
