@@ -91,7 +91,7 @@ def disminuir_stock(request, id):
 # Vista pública: Todos pueden ver la lista
 def lista_productos(request):
     # Lógica pública para ver productos...
-    return render(request, 'lista.html')
+    return render(request, 'lista_productos.html')
 
 # Vistas protegidas: Solo el admin puede modificar
 @user_passes_test(es_admin, login_url='/admin/login/')
