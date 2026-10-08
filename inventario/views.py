@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from .models import Producto3D
 from .forms import Producto3DForm
-from .models import Producto
+
 
 from django.contrib.auth.decorators import user_passes_test
 
