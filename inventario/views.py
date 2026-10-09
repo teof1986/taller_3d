@@ -39,6 +39,7 @@ def lista_productos(request):
         'valor_total': round(valor_total, 2),
     }
     # Corregida la ruta a 'inventario/lista_productos.html'
+   
     return render(request, 'inventario/lista_productos.html', context)
 
 # 2. Crear producto (AQUÍ ESTÁ LA FUNCIÓN QUE FALTABA)
